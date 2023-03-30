@@ -460,7 +460,7 @@ impl<F: ScalarField> GateCircuitBuilder<F> {
                                 phase,
                                 threads,
                                 gate,
-                                &lookup_advice[phase],
+                                lookup_advice.get(phase).unwrap_or(&vec![]),
                                 &mut region,
                                 break_points,
                             );

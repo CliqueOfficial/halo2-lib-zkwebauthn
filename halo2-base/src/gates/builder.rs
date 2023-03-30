@@ -410,7 +410,7 @@ impl<F: ScalarField> GateCircuitBuilder<F> {
         Self { builder: RefCell::new(builder), break_points: RefCell::new(break_points) }
     }
 
-    fn sub_synthesize(
+    pub fn sub_synthesize(
         &self,
         gate: &FlexGateConfig<F>,
         lookup_advice: &[Vec<Column<Advice>>],

@@ -247,7 +247,7 @@ fn bench_secp256r1_ecdsa() -> Result<(), Box<dyn std::error::Error>> {
     folder.pop();
     folder.pop();
 
-    folder.push("results/ecdsa_bench.csv");
+    folder.push("results/ecdsa_bench_secp256r1.csv");
     let mut fs_results = std::fs::File::create(folder.as_path()).unwrap();
     folder.pop();
     folder.pop();
@@ -282,12 +282,10 @@ fn bench_secp256r1_ecdsa() -> Result<(), Box<dyn std::error::Error>> {
 
         let vk_time = start_timer!(|| "Time elapsed in generating vkey");
         let vk = keygen_vk(&params, &circuit)?;
-        println!("vk: {:?}", vk);
         end_timer!(vk_time);
 
         let pk_time = start_timer!(|| "Time elapsed in generating pkey");
         let pk = keygen_pk(&params, vk, &circuit)?;
-        println!("pk: {:?}", pk);
         end_timer!(pk_time);
 
         // generate random pub key and sign random message

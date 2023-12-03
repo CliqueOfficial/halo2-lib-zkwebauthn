@@ -261,7 +261,7 @@ pub fn miller_loop_BN<'a, 'b, F: PrimeField>(
             let f_sq = fp12_chip.mul(ctx, &f, &f);
             f = fp12_multiply_with_line_equal::<F>(ecc_chip.field_chip(), ctx, &f_sq, &R, P);
         }
-        R = ecc_chip.double(ctx, &R);
+        R = ecc_chip.double::<G2Affine>(ctx, &R);
 
         assert!(pseudo_binary_encoding[i] <= 1 && pseudo_binary_encoding[i] >= -1);
         if pseudo_binary_encoding[i] != 0 {
@@ -353,7 +353,7 @@ pub fn multi_miller_loop_BN<'a, 'b, F: PrimeField>(
             }
         }
         for r in r.iter_mut() {
-            *r = ecc_chip.double(ctx, r);
+            *r = ecc_chip.double::<G2Affine>(ctx, &r);
         }
 
         assert!(pseudo_binary_encoding[i] <= 1 && pseudo_binary_encoding[i] >= -1);

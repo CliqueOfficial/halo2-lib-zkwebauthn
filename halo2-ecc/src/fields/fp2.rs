@@ -102,7 +102,7 @@ where
     FpChip: PrimeFieldChip<F, WitnessType = Value<BigInt>, ConstantType = BigUint>,
     Fp2: Field + FieldExtConstructor<FpChip::FieldType, 2>,
 {
-    const PRIME_FIELD_NUM_BITS: u32 = FpChip::FieldType::NUM_BITS;
+    const PRIME_FIELD_NUM_BITS: u32 = F::NUM_BITS;
     type ConstantType = Fp2;
     type WitnessType = Vec<Value<BigInt>>;
     type FieldPoint<'v> = FieldExtPoint<FpChip::FieldPoint<'v>>;
